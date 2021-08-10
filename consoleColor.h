@@ -7,7 +7,7 @@
 
 void setConsoleColor(int foreground = 7, int background = 1);
 
-class consoleColors {
+struct consoleColors {
 public:
     enum color_list {
         black = 0,
