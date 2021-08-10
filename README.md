@@ -1,0 +1,2 @@
+# KubikPocita
+learning c++ app 
