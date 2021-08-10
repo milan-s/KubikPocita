@@ -73,13 +73,13 @@ int calculateIt(const std::string& operType, std::vector<std::string>& usedNumbe
     int valuesUsed = 1;
     int firstNumber{};
     int secondNumber{};
-    std::vector<std::string>::iterator userNumbers_it;
+    std::vector<std::string>::iterator usedNumbers_it;
 
     while(valuesUsed == 1)
     {
         assignRand(operType,firstNumber, secondNumber);
-        userNumbers_it = std::find(usedNumbers.begin(), usedNumbers.end(), operType + "." + std::to_string(firstNumber) + "." + std::to_string(secondNumber));
-        if (userNumbers_it == usedNumbers.end())
+        usedNumbers_it = std::find(usedNumbers.begin(), usedNumbers.end(), operType + "." + std::to_string(firstNumber) + "." + std::to_string(secondNumber));
+        if (usedNumbers_it == usedNumbers.end())
         {
             valuesUsed = 0;
         }
