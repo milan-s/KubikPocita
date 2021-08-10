@@ -34,7 +34,6 @@ public:
         white = 15,
         base = 15
     };
-    enum color_list color;
 };
 
 
