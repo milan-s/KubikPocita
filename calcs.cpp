@@ -8,6 +8,7 @@
 #include <string>
 #include "io.h"
 #include "calcs.h"
+#include "consoleColor.h"
 
 int getRand()
 {
@@ -38,13 +39,17 @@ int evaluateIt(int userResult, int calcResult)
 {
     if (userResult == calcResult)
     {
+        setConsoleColor(consoleColors::green,consoleColors::black);
         std::cout << "Spravne!!!" << "\n";
+        setConsoleColor(consoleColors::base,consoleColors::black);
         writeAnswer(calcResult);
         return 1;
     }
     else
     {
+        setConsoleColor(consoleColors::red,consoleColors::black);
         std::cout << "Spatne. Zkus to znovu!" << "\n";
+        setConsoleColor(consoleColors::base,consoleColors::black);
         writeAnswer(calcResult);
         return 0;
     }

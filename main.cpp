@@ -6,12 +6,14 @@
 #include <vector>
 #include "io.h"
 #include "calcs.h"
+#include "consoleColor.h"
 
 int main()
 {
     int drillCounts = 10;
     int drillCount = drillCounts;
     std::vector<std::string> usedNumbers;
+    setConsoleColor(consoleColors::base,consoleColors::black);
 
     std::cout << "#################### \n";
     std::cout << "Ahoj Kubicku, dneska budes pocitat " << drillCounts << " prikladu pro scitani a odecitani \n";
