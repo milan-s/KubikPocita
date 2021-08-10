@@ -8,7 +8,6 @@
 void setConsoleColor(int foreground = 7, int background = 1);
 
 struct consoleColors {
-public:
     enum color_list {
         black = 0,
         dark_blue = 1,
