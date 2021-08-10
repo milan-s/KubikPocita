@@ -10,15 +10,16 @@
 int main()
 {
     int drillCounts = 10;
-    int drillCount;
+    int drillCount = drillCounts;
+    std::vector<std::string> usedNumbers;
+
     std::cout << "#################### \n";
     std::cout << "Ahoj Kubicku, dneska budes pocitat " << drillCounts << " prikladu pro scitani a odecitani \n";
     std::cout << "Hodne stesti a jdeme na to!!! \n";
     std::cout << "#################### \n";
     std::cout << "Zacneme se scitanim! \n";
     std::cout << "#################### \n";
-    drillCount = drillCounts;
-    std::vector<std::string> usedNumbers;
+
     while (drillCount > 0)
     {
         drillCount -= calculateIt("+",usedNumbers);
