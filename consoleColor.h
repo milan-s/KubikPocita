@@ -6,7 +6,6 @@
 #define KUBIKPOCITA_CONSOLECOLOR_H
 
 void setConsoleColor(int foreground = 7, int background = 1);
-bool getCurrentConsoleColor(short &ret);
 
 class consoleColors {
 public:
