@@ -12,8 +12,8 @@
 
 int getRand()
 {
-    int min = 1;
-    int max = 15;
+    constexpr int min = 1;
+    constexpr int max = 20;
     std::random_device rd;     // only used once to initialise (seed) engine
     std::mt19937 rng(rd());    // random-number engine used (Mersenne-Twister in this case)
     std::uniform_int_distribution<int> uni(min, max); // guaranteed unbiased
@@ -57,8 +57,18 @@ int evaluateIt(int userResult, int calcResult)
 
 void assignRand(const std::string& operType, int& firstNumber, int& secondNumber)
 {
+    constexpr int maxNum {30};
     firstNumber = getRand();
     secondNumber = getRand();
+
+    if (operType == "+" && firstNumber + secondNumber > maxNum)
+    {
+        while(firstNumber + secondNumber > maxNum){
+            firstNumber = getRand();
+            secondNumber = getRand();
+        }
+    }
+
     if (operType == "-" && firstNumber < secondNumber)
     {
         int dumpNumber = firstNumber;
