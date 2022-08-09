@@ -32,6 +32,14 @@ int getResult(int firstNumber, int secondNumber, const std::string& operType)
     {
         return firstNumber - secondNumber;
     }
+    else if (operType == "*")
+    {
+        return firstNumber * secondNumber;
+    }
+    else if (operType == "/")
+    {
+        return firstNumber / secondNumber;
+    }
     else return 0;
 }
 
@@ -57,7 +65,7 @@ int evaluateIt(int userResult, int calcResult)
 
 void assignRand(const std::string& operType, int& firstNumber, int& secondNumber)
 {
-    constexpr int maxNum {30};
+    constexpr int maxNum {120};
     firstNumber = getRand();
     secondNumber = getRand();
 
@@ -75,6 +83,24 @@ void assignRand(const std::string& operType, int& firstNumber, int& secondNumber
         firstNumber = secondNumber;
         secondNumber = dumpNumber;
     }
+
+    if (operType == "*" && firstNumber * secondNumber > maxNum)
+    {
+        while(firstNumber * secondNumber > maxNum){
+            firstNumber = getRand();
+            secondNumber = getRand();
+        }
+    }
+
+    if (operType == "/" && (firstNumber % secondNumber != 0 || firstNumber < secondNumber || secondNumber == 1 || firstNumber / secondNumber == 1))
+        std::cout << firstNumber << "/" << secondNumber << " = " << firstNumber % secondNumber << "\n";
+    {
+        while(firstNumber % secondNumber != 0 || firstNumber < secondNumber || secondNumber == 1  || firstNumber / secondNumber == 1){
+            firstNumber = getRand();
+            secondNumber = getRand();
+        }
+    }
+
 }
 
 int calculateIt(const std::string& operType, std::vector<std::string>& usedNumbers)

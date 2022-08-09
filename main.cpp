@@ -41,6 +41,30 @@ int main()
         std::cout << "#################### \n";
     }
 
+    std::cout << "####################### \n";
+    std::cout << "Pokracujeme nasobenim! \n";
+    std::cout << "####################### \n";
+
+    drillCount = drillCounts;
+    while (drillCount > 0)
+    {
+        drillCount -= calculateIt("*",usedNumbers);
+        std::cout << "Zbyva spocitat:" << drillCount << " prikladu.\n";
+        std::cout << "#################### \n";
+    }
+
+    std::cout << "####################### \n";
+    std::cout << "Pokracujeme delenim! \n";
+    std::cout << "####################### \n";
+
+    drillCount = drillCounts;
+    while (drillCount > 0)
+    {
+        drillCount -= calculateIt("/",usedNumbers);
+        std::cout << "Zbyva spocitat:" << drillCount << " prikladu.\n";
+        std::cout << "#################### \n";
+    }
+
     if (getConfirmation() == "HOTOVO")
     {
         return EXIT_SUCCESS;
