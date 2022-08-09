@@ -93,7 +93,6 @@ void assignRand(const std::string& operType, int& firstNumber, int& secondNumber
     }
 
     if (operType == "/" && (firstNumber % secondNumber != 0 || firstNumber < secondNumber || secondNumber == 1 || firstNumber / secondNumber == 1))
-        std::cout << firstNumber << "/" << secondNumber << " = " << firstNumber % secondNumber << "\n";
     {
         while(firstNumber % secondNumber != 0 || firstNumber < secondNumber || secondNumber == 1  || firstNumber / secondNumber == 1){
             firstNumber = getRand();
