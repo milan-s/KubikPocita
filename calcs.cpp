@@ -10,10 +10,10 @@
 #include "calcs.h"
 #include "consoleColor.h"
 
-int getRand()
+int getRand(int maxRandNum)
 {
     constexpr int min = 1;
-    constexpr int max = 20;
+    const int max = maxRandNum;
     std::random_device rd;     // only used once to initialise (seed) engine
     std::mt19937 rng(rd());    // random-number engine used (Mersenne-Twister in this case)
     std::uniform_int_distribution<int> uni(min, max); // guaranteed unbiased
@@ -66,37 +66,54 @@ int evaluateIt(int userResult, int calcResult)
 void assignRand(const std::string& operType, int& firstNumber, int& secondNumber)
 {
     constexpr int maxNum {120};
-    firstNumber = getRand();
-    secondNumber = getRand();
+    int maxRandNum = 0;
 
-    if (operType == "+" && firstNumber + secondNumber > maxNum)
+    if (operType == "+")
     {
+        maxRandNum = 99;
+        firstNumber = getRand(maxRandNum);
+        secondNumber = getRand(maxRandNum);
+
         while(firstNumber + secondNumber > maxNum){
-            firstNumber = getRand();
-            secondNumber = getRand();
+            firstNumber = getRand(maxRandNum);
+            secondNumber = getRand(maxRandNum);
         }
     }
 
-    if (operType == "-" && firstNumber < secondNumber)
+    if (operType == "-")
     {
-        int dumpNumber = firstNumber;
-        firstNumber = secondNumber;
-        secondNumber = dumpNumber;
+        maxRandNum = 120;
+        firstNumber = getRand(maxRandNum);
+        secondNumber = getRand(maxRandNum);
+
+        if (firstNumber < secondNumber) {
+            int dumpNumber = firstNumber;
+            firstNumber = secondNumber;
+            secondNumber = dumpNumber;
+        }
     }
 
-    if (operType == "*" && firstNumber * secondNumber > maxNum)
+    if (operType == "*")
     {
+        maxRandNum = 20;
+        firstNumber = getRand(maxRandNum);
+        secondNumber = getRand(maxRandNum);
+
         while(firstNumber * secondNumber > maxNum){
-            firstNumber = getRand();
-            secondNumber = getRand();
+            firstNumber = getRand(maxRandNum);
+            secondNumber = getRand(maxRandNum);
         }
     }
 
-    if (operType == "/" && (firstNumber % secondNumber != 0 || firstNumber < secondNumber || secondNumber == 1 || firstNumber / secondNumber == 1))
+    if (operType == "/")
     {
+        maxRandNum = 100;
+        firstNumber = getRand(maxRandNum);
+        secondNumber = getRand(maxRandNum);
+
         while(firstNumber % secondNumber != 0 || firstNumber < secondNumber || secondNumber == 1  || firstNumber / secondNumber == 1){
-            firstNumber = getRand();
-            secondNumber = getRand();
+            firstNumber = getRand(maxRandNum);
+            secondNumber = getRand(maxRandNum);
         }
     }
 
