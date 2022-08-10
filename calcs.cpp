@@ -50,7 +50,7 @@ int evaluateIt(int userResult, int calcResult)
         setConsoleColor(consoleColors::green,consoleColors::black);
         std::cout << "Spravne!!!" << "\n";
         setConsoleColor(consoleColors::base,consoleColors::black);
-        writeAnswer(calcResult);
+        //writeAnswer(calcResult);
         return 1;
     }
     else
