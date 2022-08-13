@@ -4,68 +4,101 @@
 
 #include <iostream>
 #include <vector>
+#include <tuple>
 #include "io.h"
 #include "calcs.h"
 #include "consoleColor.h"
 
 int main()
 {
-    int drillCounts = 10;
-    int drillCount = drillCounts;
+    int drillCounts_ini = 10;
+    std::string doAdd_ini = "Ano";
+    std::string doSub_ini = "Ano";
+    std::string doMul_ini = "Ano";
+    std::string doDiv_ini = "Ano";
+    int drillCount;
+    int drillsPassed = 0;
+    int drillsRequired = 0;
     std::vector<std::string> usedNumbers;
     setConsoleColor(consoleColors::base,consoleColors::black);
 
     std::cout << "#################### \n";
-    std::cout << "Ahoj Kubicku, dneska budes pocitat " << drillCounts << " prikladu pro scitani a odecitani \n";
+    std::cout << "Ahoj Kubicku, dame se do pocitani \n";//dneska budeš počítat " << drillCounts << " příkladú \n";
+    std::cout << "Zakladni parametry uloh jsou:\n";
+    std::cout << "Pocet uloh pro kazdy typ vypoctu: "<< drillCounts_ini << "\n";
+    std::cout << "Vybrane typy uloh [Scitani, Odecitani, Nasobeni, Deleni]: "<< "[" << doAdd_ini << "," << doSub_ini << "," << doMul_ini << "," << doDiv_ini << "]" << "\n";
+    auto[drillCounts,doAdd,doSub,doMul,doDiv] = changeTestParams(drillCounts_ini,doAdd_ini,doSub_ini,doMul_ini,doDiv_ini);
+    drillCount = drillCounts;
     std::cout << "Hodne stesti a jdeme na to!!! \n";
-    std::cout << "#################### \n";
-    std::cout << "Zacneme se scitanim! \n";
-    std::cout << "#################### \n";
 
-    while (drillCount > 0)
-    {
-        drillCount -= calculateIt("+",usedNumbers);
-        std::cout << "Zbyva spocitat:" << drillCount << " prikladu.\n";
+    if(doAdd == "Ano"){
+        drillsRequired = drillsRequired + drillCounts;
         std::cout << "#################### \n";
+        std::cout << "Scitame!!! \n";
+        std::cout << "#################### \n";
+
+        while (drillCount > 0)
+        {
+            drillsPassed++;
+            drillCount -= calculateIt("+",usedNumbers);
+            std::cout << "Zbyva spocitat:" << drillCount << " prikladu.\n";
+            std::cout << "#################### \n";
+        }
+
     }
 
-    std::cout << "####################### \n";
-    std::cout << "Pokracujeme odecitanim! \n";
-    std::cout << "####################### \n";
+    if(doSub == "Ano"){
+        drillsRequired = drillsRequired + drillCounts;
+        std::cout << "####################### \n";
+        std::cout << "Odecitame!!! \n";
+        std::cout << "####################### \n";
 
-    drillCount = drillCounts;
-    while (drillCount > 0)
-    {
-        drillCount -= calculateIt("-",usedNumbers);
-        std::cout << "Zbyva spocitat:" << drillCount << " prikladu.\n";
-        std::cout << "#################### \n";
+        drillCount = drillCounts;
+        while (drillCount > 0)
+        {
+            drillsPassed++;
+            drillCount -= calculateIt("-",usedNumbers);
+            std::cout << "Zbyva spocitat:" << drillCount << " prikladu.\n";
+            std::cout << "#################### \n";
+        }
     }
 
-    std::cout << "####################### \n";
-    std::cout << "Pokracujeme nasobenim! \n";
-    std::cout << "####################### \n";
+    if(doMul == "Ano"){
+        drillsRequired = drillsRequired + drillCounts;
+        std::cout << "####################### \n";
+        std::cout << "Nasobime!!! \n";
+        std::cout << "####################### \n";
 
-    drillCount = drillCounts;
-    while (drillCount > 0)
-    {
-        drillCount -= calculateIt("*",usedNumbers);
-        std::cout << "Zbyva spocitat:" << drillCount << " prikladu.\n";
-        std::cout << "#################### \n";
+        drillCount = drillCounts;
+        while (drillCount > 0)
+        {
+            drillsPassed++;
+            drillCount -= calculateIt("*",usedNumbers);
+            std::cout << "Zbyva spocitat:" << drillCount << " prikladu.\n";
+            std::cout << "#################### \n";
+        }
+
     }
 
-    std::cout << "####################### \n";
-    std::cout << "Pokracujeme delenim! \n";
-    std::cout << "####################### \n";
+    if(doDiv == "Ano"){
+        drillsRequired = drillsRequired + drillCounts;
+        std::cout << "####################### \n";
+        std::cout << "Delime!!! \n";
+        std::cout << "####################### \n";
 
-    drillCount = drillCounts;
-    while (drillCount > 0)
-    {
-        drillCount -= calculateIt("/",usedNumbers);
-        std::cout << "Zbyva spocitat:" << drillCount << " prikladu.\n";
-        std::cout << "#################### \n";
+        drillCount = drillCounts;
+        while (drillCount > 0)
+        {
+            drillsPassed++;
+            drillCount -= calculateIt("/",usedNumbers);
+            std::cout << "Zbyva spocitat:" << drillCount << " prikladu.\n";
+            std::cout << "#################### \n";
+        }
+
     }
 
-    if (getConfirmation() == "HOTOVO")
+
+    if (getConfirmation(drillsPassed, drillsRequired) == "HOTOVO")
     {
         return EXIT_SUCCESS;
     }
