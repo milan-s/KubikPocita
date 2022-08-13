@@ -1,2 +1,3 @@
 # KubikPocita
+
 learning c++ app 

@@ -1,7 +1,3 @@
-//
-// Created by milan on 09.08.2021.
-//
-
 #include <iostream>
 #include <string>
 #include <cmath>
@@ -24,38 +20,47 @@ void writeAnswer(int resultNumber) {
 
 std::string getConfirmation(int drillsPassed, int drillsRequired) {
     std::string okString;
-    double successRate = std::ceil(double(drillsRequired)/double(drillsPassed)*100);
+    double successRate = std::ceil(double(drillsRequired) / double(drillsPassed) * 100);
     setConsoleColor(consoleColors::green, consoleColors::black);
-    std::cout << "Jsi hotov!!! \nGratuluji!!! \nPocet pozadovanych uloh: " << drillsRequired << "\nPocet pokusu: " << drillsPassed << "\nUspesnost: " << successRate << "%\n\nZavolej rodice! \n";
+    std::cout << "Jsi hotov!!! \nGratuluji!!! \nPocet pozadovanych uloh: " << drillsRequired << "\nPocet pokusu: "
+              << drillsPassed << "\nUspesnost: " << successRate << "%\n\nZavolej rodice! \n";
     std::cin >> okString;
     return okString;
 }
 
-std::tuple<int, std::string, std::string, std::string, std::string> changeTestParams(int drillCounts, std::string doAdd, std::string doSub, std::string doMul, std::string doDiv) {
+std::tuple<int, std::string, std::string, std::string, std::string>
+changeTestParams(int drillCounts, std::string doAdd, std::string doSub, std::string doMul, std::string doDiv) {
 
     std::string decisionValue = "Ano";
     std::string buffer;
 
     std::cout << "Chces zmenit parametry? (Ano, Ne (default)):";
     std::cin >> decisionValue;
-    std::getline(std::cin, buffer); if (buffer.size() != 0){decisionValue = "Ne";}
+    std::getline(std::cin, buffer);
+    if (!buffer.empty()) { decisionValue = "Ne"; }
 
     if (decisionValue == "Ano") {
         std::cout << "Zadej nove parametry!!!\n";
         std::cout << "Pocet uloh (default = " << drillCounts << "):" << std::endl;
-        std::getline(std::cin, buffer); if (buffer.size() != 0){drillCounts = std::stoi(buffer);}
+        std::getline(std::cin, buffer);
+        if (!buffer.empty()) { drillCounts = std::stoi(buffer); }
         std::cout << "Scitani (Ano (default), Ne):" << std::endl;
-        std::getline(std::cin, buffer); if (buffer.size() != 0){if(buffer !="Ano"){doAdd = "Ne";} else {doAdd = buffer;}}
+        std::getline(std::cin, buffer);
+        if (!buffer.empty()) { if (buffer != "Ano") { doAdd = "Ne"; } else { doAdd = buffer; }}
         std::cout << "Odecitani (Ano (default), Ne):" << std::endl;
-        std::getline(std::cin, buffer); if (buffer.size() != 0){if(buffer !="Ano"){doSub = "Ne";} else {doSub = buffer;}}
+        std::getline(std::cin, buffer);
+        if (!buffer.empty()) { if (buffer != "Ano") { doSub = "Ne"; } else { doSub = buffer; }}
         std::cout << "Nasobeni (Ano (default), Ne):" << std::endl;
-        std::getline(std::cin, buffer); if (buffer.size() != 0){if(buffer !="Ano"){doMul = "Ne";} else {doMul = buffer;}}
+        std::getline(std::cin, buffer);
+        if (!buffer.empty()) { if (buffer != "Ano") { doMul = "Ne"; } else { doMul = buffer; }}
         std::cout << "Deleni (Ano (default), Ne):" << std::endl;
-        std::getline(std::cin, buffer); if (buffer.size() != 0){if(buffer !="Ano"){doDiv = "Ne";} else {doDiv = buffer;}}
+        std::getline(std::cin, buffer);
+        if (!buffer.empty()) { if (buffer != "Ano") { doDiv = "Ne"; } else { doDiv = buffer; }}
         std::cout << "#################### \n";
         std::cout << "Nove parametry uloh jsou:\n";
-        std::cout << "Pocet uloh pro kazdy typ vypoctu: "<< drillCounts << "\n";
-        std::cout << "Vybrane typy uloh [Scitani, Odecitani, Nasobeni, Deleni]: "<< "[" << doAdd << "," << doSub << "," << doMul << "," << doDiv << "]" << "\n";
+        std::cout << "Pocet uloh pro kazdy typ vypoctu: " << drillCounts << "\n";
+        std::cout << "Vybrane typy uloh [Scitani, Odecitani, Nasobeni, Deleni]: " << "[" << doAdd << "," << doSub << ","
+                  << doMul << "," << doDiv << "]" << "\n";
         std::cout << "#################### \n";
     }
 

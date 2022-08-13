@@ -1,7 +1,3 @@
-//
-// Created by milan on 10.08.2021.
-//
-
 #ifndef KUBIKPOCITA_CONSOLECOLOR_H
 #define KUBIKPOCITA_CONSOLECOLOR_H
 
