@@ -1,7 +1,7 @@
 #ifndef KUBIKPOCITA_CONSOLECOLOR_H
 #define KUBIKPOCITA_CONSOLECOLOR_H
 
-void setConsoleColor(int foreground = 7, int background = 1);
+void setConsoleColor(int foreground = 15, int background = 0);
 
 struct consoleColors {
     enum color_list {
