@@ -35,8 +35,7 @@ changeTestParams(int drillCounts, std::string doAdd, std::string doSub, std::str
     std::string buffer;
 
     std::cout << "Chces zmenit parametry? (Ano, Ne (default)):";
-    std::cin >> decisionValue;
-    std::getline(std::cin, buffer);
+    std::getline(std::cin, decisionValue);
     if (!buffer.empty()) { decisionValue = "Ne"; }
 
     if (decisionValue == "Ano") {
