@@ -18,7 +18,7 @@ int main() {
     setConsoleColor(consoleColors::base, consoleColors::black);
 
     std::cout << "#################### \n";
-    std::cout << "Ahoj Kubicku, dame se do pocitani \n";//dneska budeš počítat " << drillCounts << " příkladú \n";
+    std::cout << "Ahoj Kubicku, dame se do pocitani \n";
     std::cout << "Zakladni parametry uloh jsou:\n";
     std::cout << "Pocet uloh pro kazdy typ vypoctu: " << drillCounts_ini << "\n";
     std::cout << "Vybrane typy uloh [Scitani, Odecitani, Nasobeni, Deleni]: " << "[" << doAdd_ini << "," << doSub_ini
