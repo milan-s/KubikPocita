@@ -1,16 +1,30 @@
 #include <iostream>
 #include <string>
-#include <cmath>
 #include "io.h"
 #include "consoleColor.h"
+#include <exception>
 
+std::string getInput(int inputColor = consoleColors::white) {
+    std::string buffer;
+    setConsoleColor(inputColor, consoleColors::black);
+    std::getline(std::cin, buffer);
+    setConsoleColor();
+    return buffer;
+}
 
 int getResultNumber() {
-    int numberInput{};
+    int numberInput;
+    std::string buffer;
     std::cout << "Napis vysledek:";
-    setConsoleColor(consoleColors::aqua, consoleColors::black);
-    std::cin >> numberInput;
-    setConsoleColor(consoleColors::base, consoleColors::black);
+    buffer = getInput(consoleColors::aqua);
+    try {
+        numberInput = std::stoi(buffer);
+    } catch (std::exception &e) {
+        setConsoleColor(consoleColors::red, consoleColors::black);
+        std::cout << "Zapsana hodnota neni cislo\n" << e.what() << std::endl;
+        setConsoleColor();
+        return -1;
+    }
     return numberInput;
 }
 
@@ -28,32 +42,33 @@ std::string getConfirmation(int drillsPassed, int drillsRequired) {
     return okString;
 }
 
+
 std::tuple<int, std::string, std::string, std::string, std::string>
 changeTestParams(int drillCounts, std::string doAdd, std::string doSub, std::string doMul, std::string doDiv) {
 
-    std::string decisionValue = "Ano";
+    std::string decisionValue;
     std::string buffer;
 
     std::cout << "Chces zmenit parametry? (Ano, Ne (default)):";
-    std::getline(std::cin, decisionValue);
+    decisionValue = getInput(consoleColors::yellow);
     if (!buffer.empty()) { decisionValue = "Ne"; }
 
     if (decisionValue == "Ano") {
         std::cout << "Zadej nove parametry!!!\n";
         std::cout << "Pocet uloh (default = " << drillCounts << "):" << std::endl;
-        std::getline(std::cin, buffer);
+        buffer = getInput(consoleColors::yellow);
         if (!buffer.empty()) { drillCounts = std::stoi(buffer); }
         std::cout << "Scitani (Ano (default), Ne):" << std::endl;
-        std::getline(std::cin, buffer);
+        buffer = getInput(consoleColors::yellow);
         if (!buffer.empty()) { if (buffer != "Ano") { doAdd = "Ne"; } else { doAdd = buffer; }}
         std::cout << "Odecitani (Ano (default), Ne):" << std::endl;
-        std::getline(std::cin, buffer);
+        buffer = getInput(consoleColors::yellow);
         if (!buffer.empty()) { if (buffer != "Ano") { doSub = "Ne"; } else { doSub = buffer; }}
         std::cout << "Nasobeni (Ano (default), Ne):" << std::endl;
-        std::getline(std::cin, buffer);
+        buffer = getInput(consoleColors::yellow);
         if (!buffer.empty()) { if (buffer != "Ano") { doMul = "Ne"; } else { doMul = buffer; }}
         std::cout << "Deleni (Ano (default), Ne):" << std::endl;
-        std::getline(std::cin, buffer);
+        buffer = getInput(consoleColors::yellow);
         if (!buffer.empty()) { if (buffer != "Ano") { doDiv = "Ne"; } else { doDiv = buffer; }}
         std::cout << "#################### \n";
         std::cout << "Nove parametry uloh jsou:\n";
