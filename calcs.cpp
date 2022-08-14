@@ -77,7 +77,7 @@ void assignRand(const std::string &operType, int &firstNumber, int &secondNumber
         firstNumber = getRand(maxRandNum);
         secondNumber = getRand(maxRandNum);
 
-        while (firstNumber * secondNumber > maxNum) {
+        while (firstNumber * secondNumber > maxNum && (firstNumber == 1 || secondNumber == 1)) {
             firstNumber = getRand(maxRandNum);
             secondNumber = getRand(maxRandNum);
         }
