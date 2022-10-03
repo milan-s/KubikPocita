@@ -3,3 +3,5 @@
 /.vs
 /out/build/x64-Debug
 /cmake-build-debug-visual-studio/
+/cmake-build-default/
+/cmake-build-default-visual-studio/
