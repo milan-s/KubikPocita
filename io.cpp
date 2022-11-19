@@ -1,8 +1,10 @@
 #include <iostream>
 #include <string>
+#include <math.h>
 #include "io.h"
 #include "consoleColor.h"
 #include <exception>
+#include <tuple>
 
 std::string getInput(int inputColor = consoleColors::white) {
     std::string buffer;
@@ -34,7 +36,7 @@ void writeAnswer(int resultNumber) {
 
 std::string getConfirmation(int drillsPassed, int drillsRequired) {
     std::string okString;
-    double successRate = std::ceil(double(drillsRequired) / double(drillsPassed) * 100);
+    double successRate = ceil(double(drillsRequired) / double(drillsPassed) * 100);
     setConsoleColor(consoleColors::green, consoleColors::black);
     std::cout << "Jsi hotov!!! \nGratuluji!!! \nPocet pozadovanych uloh: " << drillsRequired << "\nPocet pokusu: "
               << drillsPassed << "\nUspesnost: " << successRate << "%\n\nZavolej rodice! \n";
