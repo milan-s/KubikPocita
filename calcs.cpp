@@ -77,14 +77,14 @@ void assignRand(const std::string &operType, int &firstNumber, int &secondNumber
         firstNumber = getRand(maxRandNum);
         secondNumber = getRand(maxRandNum);
 
-        while (firstNumber * secondNumber > maxNum && (firstNumber == 1 || secondNumber == 1)) {
+        while (firstNumber * secondNumber > maxNum || (firstNumber == 1 || secondNumber == 1)) {
             firstNumber = getRand(maxRandNum);
             secondNumber = getRand(maxRandNum);
         }
     }
 
     if (operType == "/") {
-        maxRandNum = 100;
+        maxRandNum = 120;
         firstNumber = getRand(maxRandNum);
         secondNumber = getRand(maxRandNum);
 
